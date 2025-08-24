@@ -34,12 +34,15 @@ var app = builder.Build();
 
 app.UseSwagger();
 app.UseSwaggerUI();
-
 app.UseHttpsRedirection();  
 app.UseCors("AllowFrontend"); 
 app.UseAuthorization();
 
 app.MapControllers();
+
+// 🔹 Test endpoint
+app.MapGet("/", () => "✅ Backend is running!");
+app.MapGet("/ping", () => Results.Ok("pong"));
 
 if (app.Environment.IsDevelopment())
 {
