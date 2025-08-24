@@ -23,6 +23,7 @@ public class HotelsController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Post([FromBody] Hotel hotel)
     {
+        hotel.CreatedAt = DateTime.UtcNow;
         _context.Hotels.Add(hotel);
         await _context.SaveChangesAsync();
         return CreatedAtAction(nameof(Get), new { id = hotel.HotelId }, hotel);

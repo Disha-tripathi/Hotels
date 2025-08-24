@@ -1,28 +1,14 @@
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using System;
 
 namespace HotelAPI.Models
 {
-    [Table("Hotels")] // 👈 Forces EF to use the "Hotels" table
     public class Hotel
     {
-        [Key] // 👈 Primary Key
-        [Column("HotelId")]
         public int HotelId { get; set; }
-
-        [Required]
-        [Column("Name")]
-        public string Name { get; set; } = string.Empty;
-
-        [Required]
-        [Column("Location")]
-        public string Location { get; set; } = string.Empty;
-
-        [Column("Rating")]
+        public required string Name { get; set; }
+        public required string Location { get; set; }
         public int Rating { get; set; }
-
-        [Required]
-        [Column("TeamInCharge")]
-        public string TeamInCharge { get; set; } = string.Empty;
+        public required string TeamInCharge { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     }
 }
