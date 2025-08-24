@@ -32,6 +32,11 @@ var app = builder.Build();
 
 app.UseSwagger();
 app.UseSwaggerUI();
-app.UseCors("AllowFrontend");
+
+app.UseHttpsRedirection();  
+app.UseCors("AllowFrontend"); 
+app.UseAuthorization();
+
 app.MapControllers();
+
 app.Run();
